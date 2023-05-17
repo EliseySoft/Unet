@@ -31,35 +31,24 @@ class Unet(nn.Module):
         # encoder stage
         # print("ENCODER STAGE...")
         x1 = self.start(x)  # [b, 64, 568, 568]
-        # print(x1.shape)
         x2 = self.down1(x1) # [b, 128, 280, 280]
-        # print(x2.shape)
         x3 = self.down2(x2) # [b, 256, 136, 136]
-        # print(x3.shape)
         x4 = self.down3(x3) # [b, 512, 64, 64]
-        # print(x4.shape)
         x5 = self.down4(x4) # [b, 1024, 28, 28]
-        # print(x5.shape, end="\n\n")
 
         # decoder stage
-        # print("DECODER STAGE...")
         x = self.up1(x5, x4) # [b, 512, 52, 52]
-        # print(x.shape)
         x = self.up2(x, x3) # [b, 256, 100, 100]
-        # print(x.shape)
         x = self.up3(x, x2) # [b, 128, 196, 196]
-        # print(x.shape)
         x = self.up4(x, x1) # [b, 64, 388, 388]
-        # print(x.shape)
 
         # final layer
         x = self.final(x)
-        # print(F"FINAL SHAPE: {x.shape}")
-        
+
         return self.sigmoid(x)
 
 
 if __name__ == "__main__":
     model = Unet(in_channels = 3, number_classes=2)
-    input = torch.randn([8, 3, 572, 572])
-    output = model(input)
+    inputs = torch.randn([8, 3, 572, 572])
+    outputs = model(inputs)
