@@ -52,9 +52,7 @@ class Up(nn.Module):
         return inputs[:, :, y1:y2, x1: x2]
 
     def forward(self, x, encoder_features):
-        print("shape before:", x.shape)
         x = self.up(x)
-        print("shape after", x.shape)
         encoder_features = self.crop(encoder_features, new_shape=x.shape)
         x = torch.cat((encoder_features, x), dim=1)
         x = self.double_conv(x)

@@ -29,7 +29,6 @@ class Unet(nn.Module):
     
     def forward(self, x):
         # encoder stage
-        # print("ENCODER STAGE...")
         x1 = self.start(x)  # [b, 64, 568, 568]
         x2 = self.down1(x1) # [b, 128, 280, 280]
         x3 = self.down2(x2) # [b, 256, 136, 136]
