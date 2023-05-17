@@ -14,4 +14,4 @@ In `unet_model.py` located Unet model which consists of the above blocks.
 `PH2` dataset (https://www.fc.up.pt/addi/ph2%20database.html) was used to train the model. This image database contains a total of 200 dermoscopic images of melanocytic lesions, including 80 common nevi, 80 atypical nevi, and 40 melanomas. The PH² database includes medical annotation of all the images namely medical segmentation of the lesion, clinical and histological diagnosis and the assessment of several dermoscopic criteria (colors; pigment network; dots/globules; streaks; regression areas; blue-whitish veil).
 
 ## Training
-Simple training code located in `train_unet.ipynb`. 
+Simple training code located in `train_unet.ipynb`. For training was created a simple trainer class.
